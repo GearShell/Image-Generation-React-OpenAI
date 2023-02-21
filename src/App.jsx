@@ -4,7 +4,7 @@ import Codex from "./Components/Codex Engine";
 import TextWriter from "./Components/Text Writer Engine";
 import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./resorce/css/default.css";
+import "./Resource/CSS/default.css";
 
 
 function App() {
