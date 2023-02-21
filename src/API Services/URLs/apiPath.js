@@ -1,3 +1,3 @@
 export const apiPath = {
-    UNSPLASH_API_IMAGE_BY_SEARCH: "/search/photos"
+    UNSPLASH_API_IMAGE_BY_SEARCH: "/search/photos",
 };

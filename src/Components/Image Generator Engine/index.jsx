@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Configuration, OpenAIApi } from "openai";
 import { baseAPIPath } from "../../API Services/BaseURLs/basePath";
 import { apiPath } from "../../API Services/URLs/apiPath";
 
 const ImageGenerator = () => {
+
+  console.log(process.env.REACT_APP_OPENAI_IMAGE_API_KEY);
+
   const [search, setSearch] = useState("");
   const [image, setImage] = useState();
 
@@ -19,6 +23,21 @@ const ImageGenerator = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const configuration = new Configuration({
+    apiKey: process.env.REACT_APP_OPENAI_IMAGE_API_KEY,
+  });
+
+  const openai = new OpenAIApi(configuration);
+
+  const getImageOpenAI = async () => {
+    const res = await openai.createImage({
+      prompt: "A cute baby sea otter",
+      n: 10,
+      size: "1024x1024",
+    });
+    console.log(res);
   };
 
   const handleChange = (e) => {
@@ -60,7 +79,8 @@ const ImageGenerator = () => {
           <button
             type="button"
             className="btn btn-dark"
-            onClick={getImageUnsplash}
+            // onClick={getImageUnsplash}
+            onClick={getImageOpenAI}
           >
             Search
           </button>
