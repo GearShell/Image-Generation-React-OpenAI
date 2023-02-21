@@ -1,13 +1,13 @@
-import './App.css';
-import ImageGenerator from "./Components/Image Generator Engine/ImageGenerator";
-
+import ImageGenerator from "./Components/Image Generator Engine";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
     <>
-        <ImageGenerator/>
+      <Navbar/>
+      <ImageGenerator/>
     </>
-  )
+  );
 }
 
 export default App;
