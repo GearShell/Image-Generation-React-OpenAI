@@ -1,0 +1,16 @@
+.ig_container{
+   margin-right: 30px; 
+   margin-left: 30px;
+   background-color: rgba(21, 20, 20, 0.371); 
+   min-height: 80vh;
+}
+.ig_title{
+    color: white;
+    padding: 20px;
+    font-size: 80px;
+}
+.ig_desc{
+    color: white;
+    font-size: 30px;
+
+}
