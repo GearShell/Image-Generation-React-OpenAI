@@ -5,11 +5,9 @@ import { baseAPIPath } from "../../API Services/BaseURLs/basePath";
 import { apiPath } from "../../API Services/URLs/apiPath";
 
 const ImageGenerator = () => {
-
-  console.log(process.env.REACT_APP_OPENAI_IMAGE_API_KEY);
-
   const [search, setSearch] = useState("");
   const [image, setImage] = useState();
+  const [openaiApi, setOpenaiApi] = useState(false);
 
   const getImageUnsplash = () => {
     axios
@@ -17,7 +15,6 @@ const ImageGenerator = () => {
         `${baseAPIPath.UNSPLASH_BASE_URL}${apiPath.UNSPLASH_API_IMAGE_BY_SEARCH}?page=1&query=${search}&client_id=${process.env.REACT_APP_IMAGE_UNSPLASH_API_KEY}`
       )
       .then((res) => {
-        console.log(res.data.results);
         setImage(res.data.results);
       })
       .catch((err) => {
@@ -33,11 +30,21 @@ const ImageGenerator = () => {
 
   const getImageOpenAI = async () => {
     const res = await openai.createImage({
-      prompt: "A cute baby sea otter",
+      prompt: search,
       n: 10,
       size: "1024x1024",
     });
-    console.log(res);
+    setImage(res.data.data);
+  };
+
+  const handleAPI = () => {
+    if (document.getElementById("flexSwitchCheckChecked")?.checked) {
+      setOpenaiApi(true);
+      getImageOpenAI();
+    } else {
+      setOpenaiApi(false);
+      getImageUnsplash();
+    }
   };
 
   const handleChange = (e) => {
@@ -57,31 +64,20 @@ const ImageGenerator = () => {
             value={search}
           />
         </div>
-        <div className="form-check form-check-inline ">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox1"
-            value="option1"
-          />
-          <label className="form-check-label">Search Through Web</label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox2"
-            value="option2"
-          />
-          <label className="form-check-label">Search Through AI Server</label>
+        <div >
+          <div class="form-check form-switch">
+          <p class="form-check-label">Search Through Web</p>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckChecked"
+            />
+          <p class="form-check-label">Search Through AI</p>
+          </div>
         </div>
         <div className="">
-          <button
-            type="button"
-            className="btn btn-dark"
-            // onClick={getImageUnsplash}
-            onClick={getImageOpenAI}
-          >
+          <button type="button" className="btn btn-dark" onClick={handleAPI}>
             Search
           </button>
         </div>
@@ -89,9 +85,13 @@ const ImageGenerator = () => {
           {image?.map((value, index) => {
             return (
               <div key={index} className="col-4">
-                  <div className="card" style={{ width: "18rem" }}>
-                <img src={value.urls.full} className="card-img-top" alt="..." />
-              </div>
+                <div className="card" style={{ width: "18rem" }}>
+                  <img
+                    src={openaiApi ? value?.url : value?.urls?.full}
+                    className="card-img-top"
+                    alt="..."
+                  />
+                </div>
               </div>
             );
           })}
