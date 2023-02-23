@@ -5,8 +5,8 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg" data-bs-theme="transparent">
-        <Link to="/" className="navbar-brand" href="#">
-          Generify
+        <Link to="/" className="navbar-brand">
+          Build Developers
         </Link>
         <button
           className="navbar-toggler"
@@ -32,14 +32,34 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/codex" className="nav-link active" href="#">
+              <Link to="/codex" className="nav-link active">
                 Codex
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/text-writer" className="nav-link active" href="#">
+              <Link to="/text-writer" className="nav-link active">
                 AI Text Writer
               </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="" className="nav-link active">
+                Documentation
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="" className="nav-link active">
+                About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <button type="button" className="btn btn-outline-dark">
+                Login
+              </button>
+            </li>
+            <li className="nav-item">
+              <button type="button" className="btn btn-dark">
+                Register as a Developer
+              </button>
             </li>
           </ul>
         </div>

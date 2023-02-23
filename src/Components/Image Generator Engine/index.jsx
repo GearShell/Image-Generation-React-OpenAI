@@ -3,6 +3,7 @@ import axios from "axios";
 import { Configuration, OpenAIApi } from "openai";
 import { baseAPIPath } from "../../API Services/BaseURLs/basePath";
 import { apiPath } from "../../API Services/URLs/apiPath";
+import CONSTANTS from "../../Resource/Assets/Constants/Constants";
 
 const ImageGenerator = () => {
   const [search, setSearch] = useState("");
@@ -31,8 +32,8 @@ const ImageGenerator = () => {
   const getImageOpenAI = async () => {
     const res = await openai.createImage({
       prompt: search,
-      n: 10,
-      size: "1024x1024",
+      n: CONSTANTS.IMAGES_COUNT,
+      size: CONSTANTS.IMAGES_SIZE,
     });
     setImage(res.data.data);
   };
@@ -52,9 +53,12 @@ const ImageGenerator = () => {
   };
   return (
     <>
-      <div className="ig_container">
+      <div>
+        <div>
+          <h1>Image Generator</h1>
+        </div>
         <div className="mb-3 container">
-          <label className="form-label ig_title">Search The Image Below:</label>
+          <label className="form-label">Search The Image Below:</label>
           <input
             type="text"
             className="form-control"
