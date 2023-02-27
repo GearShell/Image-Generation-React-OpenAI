@@ -1,20 +1,36 @@
 import React, { useState } from "react";
+import { Configuration, OpenAIApi } from "openai";
 
 const Codex = () => {
-  const [text, setText] = useState(
-    "Your Code Will Be Shown Here !! Happy Coding !!"
-  );
+  const [text, setText] = useState("");
+  const [result, setResult] = useState(" Your Code will be shown here !!");
 
   const submit = (event) => {
     if (event.key == "Enter") {
       event.target.value.trim();
-      if(event.target.value!=" "){
-        console.log(event.target.value);
+      if (event.target.value != " ") {
         setText(event.target.value);
         event.target.value = "";
-      };
+        getCode();
+      }
     }
   };
+  const configuration = new Configuration({
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+  });
+
+  const openai = new OpenAIApi(configuration);
+
+  const getCode = async () => {
+    const res = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: "<|endoftext|>" + text + "\n--\nLabel:",
+      max_tokens: 1000,
+    });
+    setResult(res.data.choices[0].text);
+    console.log(result);
+  };
+
   return (
     <>
       <div className="ig_container">
@@ -39,7 +55,7 @@ const Codex = () => {
           <div className="input-group input-group-lg">
             <textarea
               className="form-control text-secondary text-center"
-              value={text}
+              value={result}
             ></textarea>
           </div>
         </div>

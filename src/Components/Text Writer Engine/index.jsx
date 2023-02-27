@@ -18,7 +18,7 @@ const ImageGenerator = () => {
 
   const getCompletetionOpenAI = async () => {
     const res = await openai.createCompletion({
-      model: "text-davinci-03",
+      model: "text-davinci-003",
       prompt: search,
       max_tokens: CONSTANTS.MAX_TOKEN_NUMBER,
       temperature: CONSTANTS.TEMPERATURE_COUNT,
