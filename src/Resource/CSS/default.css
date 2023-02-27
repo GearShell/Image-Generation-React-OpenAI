@@ -1,16 +1,31 @@
 .ig_container{
    margin-right: 30px; 
    margin-left: 30px;
-   background-color: rgb(21 20 20 / 12%); 
    min-height: 80vh;
 }
 .ig_title{
     color: black;
     padding: 20px;
     font-size: 80px;
+    font-family: cursive;
 }
 .ig_desc{
     color: black;
-    font-size: 30px;
+    font-size: 25px;
+    margin-bottom: 70px;
+}
 
+.ig_navbar{
+    padding: 10px;
+}
+
+.nav-item{
+   margin: 3px;
+}
+.navbar-brand{
+    font-size: 25px;
+    font-family: cursive;
+}
+.nav-custom-active{
+    border-bottom: 2px solid black;
 }
