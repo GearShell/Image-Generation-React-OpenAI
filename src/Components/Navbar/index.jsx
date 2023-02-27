@@ -38,7 +38,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link to="/text-writer" className="nav-link active">
-                AI Text Writer
+                AI Text Editer
               </Link>
             </li>
             <li className="nav-item">
