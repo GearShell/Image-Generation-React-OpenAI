@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import Highlight from "react-highlight";
-import CONSTANTS from "../../Resource/Assets/Constants/Constants";
+import CONSTANTS, { MODELS } from "../../Resource/Assets/Constants/Constants";
 
 const Codex = () => {
   const [text, setText] = useState("");
@@ -30,7 +30,7 @@ const Codex = () => {
   const getCode = async () => {
     // console.log(text);
     const res = await openai.createCompletion({
-      model: CONSTANTS.CODEX_MODEL,
+      model: MODELS.CODEX_MODEL,
       prompt: "<|endoftext|>" + text + "\n--\nLabel:",
       max_tokens: CONSTANTS.MAX_TOKEN_FOR_CODE,
     });

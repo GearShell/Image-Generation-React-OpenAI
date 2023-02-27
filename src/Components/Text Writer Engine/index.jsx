@@ -3,7 +3,7 @@ import axios from "axios";
 import { Configuration, OpenAIApi } from "openai";
 import { baseAPIPath } from "../../API Services/BaseURLs/basePath";
 import { apiPath } from "../../API Services/URLs/apiPath";
-import CONSTANTS from "../../Resource/Assets/Constants/Constants";
+import CONSTANTS, { MODELS } from "../../Resource/Assets/Constants/Constants";
 
 const ImageGenerator = () => {
   const [search, setSearch] = useState("");
@@ -18,7 +18,7 @@ const ImageGenerator = () => {
 
   const getCompletetionOpenAI = async () => {
     const res = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: MODELS.CODEX_MODEL,
       prompt: search,
       max_tokens: CONSTANTS.MAX_TOKEN_NUMBER,
       temperature: CONSTANTS.TEMPERATURE_COUNT,
