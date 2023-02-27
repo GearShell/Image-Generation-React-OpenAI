@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { Configuration, OpenAIApi } from "openai";
+import Highlight from "react-highlight";
+import CONSTANTS from "../../Resource/Assets/Constants/Constants";
 
 const Codex = () => {
   const [text, setText] = useState("");
   const [result, setResult] = useState(" Your Code will be shown here !!");
 
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
   const submit = (event) => {
     if (event.key == "Enter") {
       event.target.value.trim();
       if (event.target.value != " ") {
-        setText(event.target.value);
+        console.log(event.target.value);
         event.target.value = "";
+        console.log("Text at submit : " + text);
         getCode();
       }
     }
@@ -22,41 +28,47 @@ const Codex = () => {
   const openai = new OpenAIApi(configuration);
 
   const getCode = async () => {
+    // console.log(text);
     const res = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: CONSTANTS.CODEX_MODEL,
       prompt: "<|endoftext|>" + text + "\n--\nLabel:",
-      max_tokens: 1000,
+      max_tokens: CONSTANTS.MAX_TOKEN_FOR_CODE,
     });
     setResult(res.data.choices[0].text);
-    console.log(result);
   };
 
   return (
     <>
       <div className="ig_container">
         <div className="container">
-          <h1 className="ig_title text-center">Codex</h1>
-          <p className="ig_desc text-center">
+          <h1 className="ig_title">Codex</h1>
+          <p className="ig_desc">
             Let us help you get better code !!
           </p>
         </div>
         <div className="container">
-          <div className="input-group">
-            <span className="input-group-text">Write here 👉</span>
-            <textarea
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">
+              Write here 👉
+            </span>
+            <input
+              type="text"
               className="form-control"
-              aria-label="With textarea"
+              placeholder="Ask here"
+              aria-label="code"
+              aria-describedby="basic-addon1"
+              value={text}
+              onChange={(e) => handleChange(e)}
               onKeyDown={(event) => submit(event)}
-            ></textarea>
+            />
           </div>
         </div>
         <br />
         <div className="container">
-          <div className="input-group input-group-lg">
-            <textarea
-              className="form-control text-secondary text-center"
-              value={result}
-            ></textarea>
+          <div className="container bg-dark border border-5 p-5 border-dark-subtle">
+            <Highlight className="atelier-savanna-light text-light">
+              {result}
+            </Highlight>
           </div>
         </div>
         <br />
