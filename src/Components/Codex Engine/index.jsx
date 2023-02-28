@@ -65,7 +65,7 @@ const Codex = () => {
         </div>
         <br />
         <div className="container">
-          <div className="container bg-dark border border-5 p-5 border-dark-subtle">
+          <div className="input-group bg-dark border border-5 py-5 px-4 border-dark-subtle">
             <Highlight className="atelier-savanna-light text-light">
               {result}
             </Highlight>

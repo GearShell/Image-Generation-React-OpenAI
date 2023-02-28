@@ -53,9 +53,10 @@ const ImageGenerator = () => {
   };
   return (
     <>
-      <div>
-        <div>
-          <h1>Image Generator</h1>
+      <div className="ig_container">
+        <div className="container">
+          <h1 className="ig_title">Image Generator</h1>
+          <p className="ig_desc">Discover images of your choice !!</p>
         </div>
         <div className="mb-3 container">
           <label className="form-label">Search The Image Below:</label>
@@ -68,24 +69,26 @@ const ImageGenerator = () => {
             value={search}
           />
         </div>
-        <div >
-          <div class="form-check form-switch">
-          <p class="form-check-label">Search Through Web</p>
+        <div className="container">
+          <div class="form-check form-switch flex">
+          <p class="form-check-label label_first">Search Through Web</p>
+          <div className="checkbox">
             <input
               class="form-check-input"
               type="checkbox"
               role="switch"
               id="flexSwitchCheckChecked"
             />
-          <p class="form-check-label">Search Through AI</p>
+          </div>
+          <p class="form-check-label label_last">Search Through AI</p>
           </div>
         </div>
-        <div className="">
+        <div className="container">
           <button type="button" className="btn btn-dark" onClick={handleAPI}>
             Search
           </button>
         </div>
-        <div>
+        <div className="container">
           {image?.map((value, index) => {
             return (
               <div key={index} className="col-4">
