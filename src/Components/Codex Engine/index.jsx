@@ -49,7 +49,7 @@ const Codex = () => {
         <div className="container">
           <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">
-              Write here 👉
+              Write here
             </span>
             <input
               type="text"
