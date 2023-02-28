@@ -4,14 +4,6 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   let url = window.location.pathname;
   console.log(url);
-  // const currentUrl = () => {
-  // let link = document.getElementsByClassName("nav-link");
-  // let links= link[0].href.split("/");
-  // if(links[links.length-1].includes(url)){
-  //   console.log(links.length-1);
-  // };
-  // };
-  // currentUrl();
   return (
     <div className="ig_navbar">
       <nav className="navbar navbar-expand-lg" data-bs-theme="transparent">
@@ -62,12 +54,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <button type="button" className="btn btn-outline-dark">
+              <button type="button" className="btn btn-outline-dark nav-item-btn">
                 Login
               </button>
             </li>
             <li className="nav-item">
-              <button type="button" className="btn btn-dark">
+              <button type="button" className="btn btn-dark nav-item-btn">
                 Register as a Developer
               </button>
             </li>

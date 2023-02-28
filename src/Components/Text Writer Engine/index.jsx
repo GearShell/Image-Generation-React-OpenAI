@@ -31,22 +31,28 @@ const ImageGenerator = () => {
   };
   return (
     <>
-      <div>
-        <div>
-          <h1>AI Text Editor</h1>
+      <div className="ig_container">
+        <div className="container">
+          <h1 className="ig_title">AI Text Editor</h1>
+          <p className="ig_desc">Struggling with words, Let us help !!</p>
         </div>
         <div className="mb-3 container">
-          <label className="form-label">Enter Your Query Below:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Enter Here!!!"
-            onChange={(e) => handleChange(e)}
-            value={search}
-          />
+        <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">
+              Enter Here
+            </span>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Ask here"
+              aria-label="code"
+              aria-describedby="basic-addon1"
+              value={search}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
         </div>
-        <div className="">
+        <div className="container">
           <button type="button" className="btn btn-dark" onClick={getCompletetionOpenAI}>
             Search
           </button>
