@@ -5,19 +5,19 @@
 }
 
 .ig_container{
-   margin-right: 30px; 
-   margin-left: 30px;
    min-height: 80vh;
 }
 .ig_title{
     color: black;
     padding: 20px 0px 0px;
-    font-size: 80px;
+    font-size: 40px;
+    font-weight: 900;
     font-family: 'Arial Narrow Bold', sans-serif;
 }
 .ig_desc{
     color: black;
-    font-size: 25px;
+    font-size: 15px;
+    font-weight: 500;
     margin-bottom: 40px;
 }
 
@@ -54,11 +54,22 @@
     margin-left: 20px;
     margin-right: 20px;
 }
-
+.navbar-nav{
+    gap: 5px;
+    align-items: center;
+}
 .flex{
     display: flex;
-    width: 35%;
-    justify-content: space-between;
+    gap: 10%;
+    justify-content: flex-start;
+}
+.image-result{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
 }
 
 input[type=checkbox]{

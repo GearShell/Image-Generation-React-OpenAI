@@ -70,17 +70,17 @@ const ImageGenerator = () => {
           />
         </div>
         <div className="container">
-          <div class="form-check form-switch flex">
-          <p class="form-check-label label_first">Search Through Web</p>
+          <div className="form-check form-switch flex">
+          <p className="form-check-label label_first">Search Through Web</p>
           <div className="checkbox">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               role="switch"
               id="flexSwitchCheckChecked"
             />
           </div>
-          <p class="form-check-label label_last">Search Through AI</p>
+          <p className="form-check-label label_last">Search Through AI</p>
           </div>
         </div>
         <div className="container">
@@ -88,7 +88,7 @@ const ImageGenerator = () => {
             Search
           </button>
         </div>
-        <div className="container">
+        <div className="container image-result">
           {image?.map((value, index) => {
             return (
               <div key={index} className="col-4">
