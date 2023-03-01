@@ -9,6 +9,7 @@ const ImageGenerator = () => {
   const [search, setSearch] = useState("");
   const [image, setImage] = useState();
   const [openaiApi, setOpenaiApi] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
 
   const getImageUnsplash = () => {
     axios
@@ -17,9 +18,11 @@ const ImageGenerator = () => {
       )
       .then((res) => {
         setImage(res.data.results);
+        setShowLoader(true);
       })
       .catch((err) => {
         console.log(err);
+        setShowLoader(true);
       });
   };
 
@@ -36,9 +39,11 @@ const ImageGenerator = () => {
       size: CONSTANTS.IMAGES_SIZE,
     });
     setImage(res.data.data);
+    setShowLoader(true);
   };
 
   const handleAPI = () => {
+    setShowLoader(false);
     if (document.getElementById("flexSwitchCheckChecked")?.checked) {
       setOpenaiApi(true);
       getImageOpenAI();
@@ -51,6 +56,7 @@ const ImageGenerator = () => {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
+  console.log(showLoader);
   return (
     <>
       <div className="ig_container">
@@ -84,14 +90,15 @@ const ImageGenerator = () => {
           </div>
         </div>
         <div className="container">
-          <button type="button" className="btn btn-dark" onClick={handleAPI}>
+          <button type="button" className="btn btn-dark ig_btn" onClick={handleAPI}>
             Search
           </button>
         </div>
+        <div className={"ig_loader " + (showLoader ? "display_none": " ")}></div>
         <div className="container image-result">
           {image?.map((value, index) => {
             return (
-              <div key={index} className="col-4">
+              <div key={index} className="img-wrap">
                 <div className="card" style={{ width: "18rem" }}>
                   <img
                     src={openaiApi ? value?.url : value?.urls?.full}
