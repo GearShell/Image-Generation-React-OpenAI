@@ -36,6 +36,17 @@ body{
     margin-bottom: 40px;
 }
 
+.ig_about{
+    color: black;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    text-align: center;
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 .ig_navbar{
     padding: 10px ;
     border-bottom: 3px solid black;
