@@ -44,24 +44,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li className={"nav-item " + (url == "/documentation" ? 'nav-custom-active' : " ")}>
-              <Link to="" className="nav-link">
+              <Link to="/documentation" className="nav-link">
                 Documentation
               </Link>
             </li>
             <li className={"nav-item " + (url == "/about" ? 'nav-custom-active' : " ")}>
-              <Link to="" className="nav-link">
+              <Link to="/about" className="nav-link">
                 About
               </Link>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn btn-outline-dark nav-item-btn">
-                Login
-              </button>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn btn-dark nav-item-btn">
-                Register as a Developer
-              </button>
             </li>
           </ul>
         </div>
